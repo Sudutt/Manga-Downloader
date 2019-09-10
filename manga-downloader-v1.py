@@ -63,7 +63,7 @@ def get_last_chap(manga):
 def update(manga):
 #go to directory
     name = manga.get_text().strip()
-    os.chdir(name)
+    os.chdir("[MANGA] "+name)
 #get last offline chap
     chaps = [ name for name in filter(os.path.isdir, os.listdir(os.getcwd())) ]
     if len(chaps)==0:
@@ -129,15 +129,19 @@ def main():
 
 def full_update():
 #get all names
-    manga_names = [ name[8:0] for name in filter(os.path.isdir, os.listdir(os.getcwd())) if name[0] != '.']
+    manga_names = [ name[8:] for name in filter(os.path.isdir, os.listdir(os.getcwd())) if name[0] != '.']
     manga_pages = [ search(name) for name in manga_names]
 #check if still online
-    for page,name in zip(manga_pages, manga_names):
-        if len(page)==0:
+    for pages,name in zip(manga_pages, manga_names):
+        if len(pages)==0:
             print(f"\nSorry! '{name}' is not available on isekaiscans.com anymore")
         else:
+            for _ in pages:
+                if _.get_text().strip() == name:
+                    page = _
+                    break
             print(f"\nUpdating '{name}'...")
-            update(page[0])
+            update(page)
     print("\nThank you! Please feel free to contribute to the author & isekaiscans.com")
 
 
