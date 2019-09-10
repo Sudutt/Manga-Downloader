@@ -11,3 +11,6 @@ Currently v1 supports only `isekai-scans.com` (Hats off to you guys!!)
 
 ## v2
 This is a future attempt to add multi-website support & simplify the code for better debugging & development
+
+## v3
+We also hope to add a simple GUI (instead of the current CLI) for better reach of the utility
