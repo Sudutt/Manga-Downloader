@@ -115,6 +115,7 @@ def main():
             break
     if req_manga==None:
         print("\nSorry! Not available on isekaiscans.com")
+        return
 #get status (existing/new)
     mangas = [ name for name in filter(os.path.isdir, os.listdir(os.getcwd())) ]
     req_name = req_manga.get_text().strip()
