@@ -31,7 +31,7 @@ def check_page(url):
 def download_chap(base_url, ch_no):
 #make chapter
     print("Creating chapter "+str(ch_no)+"...")
-    os.mkdir("Chapter "+str(ch_no))
+    os.makedirs("Chapter "+str(ch_no), exist_ok=True)
     os.chdir("Chapter "+str(ch_no))
 #get list of pages
     chap_url = base_url+str(ch_no)
@@ -86,7 +86,7 @@ def create(manga):
 #create directory
     name = manga.get_text().strip()
     print("Creating '"+name+"'...")
-    os.mkdir("[MANGA] "+name)
+    os.makedirs("[MANGA] "+name, exist_ok=True)
     os.chdir("[MANGA] "+name)
 #get all chapters
     MAX_CHAP = get_last_chap(manga)
